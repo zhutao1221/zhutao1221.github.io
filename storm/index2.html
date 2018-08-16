@@ -12,8 +12,8 @@
         .setPath( 'pic/storm/' )
         .load( [ 'px.jpg', 'nx.jpg', 'py.jpg', 'ny.jpg', 'pz.jpg', 'nz.jpg' ] );
 
-        var windowX = window.innerWidth-80;
-        var windowY = window.innerHeight-60;
+        var windowX = window.innerWidth-window.innerWidth/10;
+        var windowY = window.innerHeight-window.innerWidth/10;
         //var windowX = 800;
         //var windowY = 600;
         var camera=new THREE.PerspectiveCamera(40,windowX/windowY,1,2000);
