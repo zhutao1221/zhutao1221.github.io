@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <script src="three.js"></script>
-    <script src="OrbitControls.js"></script>
+    <script src="DeviceOrientationControls.js"></script>
 </head>
 <body>
     <script>
@@ -12,8 +12,8 @@
         .setPath( 'pic/storm/' )
         .load( [ 'px.jpg', 'nx.jpg', 'py.jpg', 'ny.jpg', 'pz.jpg', 'nz.jpg' ] );
 
-        var windowX = window.innerWidth-window.innerWidth/30;
-        var windowY = window.innerHeight-window.innerWidth/30;
+        var windowX = window.innerWidth-window.innerWidth/50;
+        var windowY = window.innerHeight-window.innerWidth/50;
         //var windowX = 800;
         //var windowY = 600;
         var camera=new THREE.PerspectiveCamera(40,windowX/windowY,1,2000);
@@ -30,7 +30,7 @@
 
         render();
 
-        var comtrols=new THREE.OrbitControls(camera);
+        var comtrols=new THREE.DeviceOrientationControls(camera);
         comtrols.addEventListener('change', render)
 
         function animate() {
