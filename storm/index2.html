@@ -7,39 +7,54 @@
 </head>
 <body>
     <script>
-        var scene=new THREE.Scene();
-        scene.background = new THREE.CubeTextureLoader()
-        .setPath( 'pic/storm/' )
-        .load( [ 'px.jpg', 'nx.jpg', 'py.jpg', 'ny.jpg', 'pz.jpg', 'nz.jpg' ] );
+		var camera, scene, renderer, controls;
 
-        var windowX = window.innerWidth-window.innerWidth/50;
-        var windowY = window.innerHeight-window.innerWidth/50;
-        //var windowX = 800;
-        //var windowY = 600;
-        var camera=new THREE.PerspectiveCamera(40,windowX/windowY,1,2000);
-        camera.position.set(200,200,200);
-        camera.lookAt(scene.position);
+		init();
+		animate();	
+	
+			function init() {
 
-        var renderer=new THREE.WebGLRenderer();
-        renderer.setSize(windowX,windowY);
-        document.body.appendChild(renderer.domElement);
+				camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 1, 1100 );
+				
+				controls = new THREE.DeviceOrientationControls( camera );
 
-        function render() {
-            renderer.render(scene,camera);
-        }
+				scene = new THREE.Scene();
+				scene.background = new THREE.CubeTextureLoader()
+				.setPath( 'pic/storm/' )
+				.load( [ 'px.jpg', 'nx.jpg', 'py.jpg', 'ny.jpg', 'pz.jpg', 'nz.jpg' ] );
+				
 
-        render();
 
-        var controls=new THREE.DeviceOrientationControls(camera);
-        //comtrols.addEventListener('change', render)
+				renderer = new THREE.WebGLRenderer( { antialias: true } );
+				renderer.setPixelRatio( window.devicePixelRatio );
+				renderer.setSize( window.innerWidth, window.innerHeight );
+				document.body.appendChild( renderer.domElement );
 
-        function animate() {
-            requestAnimationFrame( animate );
-			controls.update();
-            render();
-        }
+				//
 
-        animate();
+				window.addEventListener( 'resize', onWindowResize, false );
+
+
+			}
+
+			function animate() {
+
+				window.requestAnimationFrame( animate );
+
+				controls.update();
+				renderer.render( scene, camera );
+
+			}
+
+			function onWindowResize() {
+
+				camera.aspect = window.innerWidth / window.innerHeight;
+				camera.updateProjectionMatrix();
+
+				renderer.setSize( window.innerWidth, window.innerHeight );
+
+			}
+			
     </script>
 </body>
 </html>
