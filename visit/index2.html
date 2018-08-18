@@ -12,8 +12,8 @@
         .setPath( 'pic/visit/' )
         .load( [ 'px.jpg', 'nx.jpg', 'py.jpg', 'ny.jpg', 'pz.jpg', 'nz.jpg' ] );
 
-        var windowX = window.innerWidth-window.innerWidth/50;
-        var windowY = window.innerHeight-window.innerWidth/50;
+        var windowX = window.innerWidth-window.innerWidth;
+        var windowY = window.innerHeight-window.innerWidth;
         //var windowX = 800;
         //var windowY = 600;
         var camera=new THREE.PerspectiveCamera(40,windowX/windowY,1,2000);
@@ -24,6 +24,8 @@
         renderer.setSize(windowX,windowY);
         document.body.appendChild(renderer.domElement);
 
+		window.addEventListener( 'resize', onWindowResize, false );
+		
         function render() {
             renderer.render(scene,camera);
         }
@@ -39,7 +41,14 @@
             render();
         }
 
-        animate();
+		function onWindowResize() {
+
+			camera.aspect = window.innerWidth / window.innerHeight;
+			camera.updateProjectionMatrix();
+
+			renderer.setSize( window.innerWidth, window.innerHeight );
+
+		}
     </script>
 </body>
 </html>
