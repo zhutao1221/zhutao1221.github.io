@@ -30,11 +30,12 @@
 
         render();
 
-        var comtrols=new THREE.DeviceOrientationControls(camera);
-        comtrols.addEventListener('change', render)
+        var controls=new THREE.DeviceOrientationControls(camera);
+        //comtrols.addEventListener('change', render)
 
         function animate() {
             requestAnimationFrame( animate );
+			controls.update();
             render();
         }
 
