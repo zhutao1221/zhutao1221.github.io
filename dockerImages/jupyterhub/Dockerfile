@@ -11,6 +11,17 @@ RUN cd /tmp && \
     apt autoclean && \
     apt autoremove
 
+RUN cd /tmp && \
+	wget http://prdownloads.sourceforge.net/ta-lib/ta-lib-0.4.0-src.tar.gz && \
+	tar zxvf ta-lib-0.4.0-src.tar.gz && \
+	cd ta-lib && \
+	./configure --prefix=/usr && \
+	make && \
+	make install && \
+	cd /tmp && \
+	rm ta-lib-0.4.0-src.tar.gz && \
+	rm -r ta-lib
+	
 USER $NB_UID
 
 RUN cd /tmp && \
@@ -27,6 +38,7 @@ RUN cd /tmp && \
     pip install matplotlib -i http://pypi.douban.com/simple/  --trusted-host pypi.douban.com && \
     pip install seaborn -i http://pypi.douban.com/simple/  --trusted-host pypi.douban.com && \
     pip install scikit-learn -i http://pypi.douban.com/simple/  --trusted-host pypi.douban.com && \
+    pip install ta-lib -i http://pypi.douban.com/simple/  --trusted-host pypi.douban.com && \
     jupyter nbextension enable --py qgrid && \
     jupyter nbextension enable --py widgetsnbextension && \
     rm -rf /home/$NB_USER/.cache
@@ -42,6 +54,7 @@ RUN cd /tmp && \
     /opt/conda2/bin/pip install matplotlib -i http://pypi.douban.com/simple/  --trusted-host pypi.douban.com && \
     /opt/conda2/bin/pip install seaborn -i http://pypi.douban.com/simple/  --trusted-host pypi.douban.com && \
     /opt/conda2/bin/pip install scikit-learn -i http://pypi.douban.com/simple/  --trusted-host pypi.douban.com && \
+	/opt/conda2/bin/pip install ta-lib -i http://pypi.douban.com/simple/  --trusted-host pypi.douban.com && \
     /opt/conda2/bin/ipython kernel install --user --name python2 && \
     rm -rf /home/$NB_USER/.cache && \
     fix-permissions /opt/conda2 && \
