@@ -39,6 +39,8 @@ RUN cd /tmp && \
     pip install seaborn -i http://pypi.douban.com/simple/  --trusted-host pypi.douban.com && \
     pip install scikit-learn -i http://pypi.douban.com/simple/  --trusted-host pypi.douban.com && \
     pip install ta-lib -i http://pypi.douban.com/simple/  --trusted-host pypi.douban.com && \
+    pip install xlrd -i http://pypi.douban.com/simple/  --trusted-host pypi.douban.com && \
+    pip install xlwt -i http://pypi.douban.com/simple/  --trusted-host pypi.douban.com && \
     jupyter nbextension enable --py qgrid && \
     jupyter nbextension enable --py widgetsnbextension && \
     rm -rf /home/$NB_USER/.cache
@@ -54,8 +56,9 @@ RUN cd /tmp && \
     /opt/conda2/bin/pip install matplotlib -i http://pypi.douban.com/simple/  --trusted-host pypi.douban.com && \
     /opt/conda2/bin/pip install seaborn -i http://pypi.douban.com/simple/  --trusted-host pypi.douban.com && \
     /opt/conda2/bin/pip install scikit-learn -i http://pypi.douban.com/simple/  --trusted-host pypi.douban.com && \
-	/opt/conda2/bin/pip install ta-lib -i http://pypi.douban.com/simple/  --trusted-host pypi.douban.com && \
+    /opt/conda2/bin/pip install ta-lib -i http://pypi.douban.com/simple/  --trusted-host pypi.douban.com && \
+    /opt/conda2/bin/pip install xlrd -i http://pypi.douban.com/simple/  --trusted-host pypi.douban.com && \
+    /opt/conda2/bin/pip install xlwt -i http://pypi.douban.com/simple/  --trusted-host pypi.douban.com && \
     /opt/conda2/bin/ipython kernel install --user --name python2 && \
     rm -rf /home/$NB_USER/.cache && \
-    fix-permissions /opt/conda2 && \
-    fix-permissions /home/$NB_USER
+    fix-permissions /opt/conda2
