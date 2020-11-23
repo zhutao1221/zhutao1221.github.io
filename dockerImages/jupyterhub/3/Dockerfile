@@ -23,6 +23,7 @@ RUN cd /tmp && \
 USER $NB_UID
 
 RUN cd /tmp && \
+    pip install --upgrade pip -i http://pypi.douban.com/simple/  --trusted-host pypi.douban.com && \
     pip install jupyter_contrib_nbextensions -i http://pypi.douban.com/simple/  --trusted-host pypi.douban.com && \
     jupyter contrib nbextension install --user && \
     jupyter nbextension enable notify/notify && \
@@ -31,7 +32,6 @@ RUN cd /tmp && \
     jupyter nbextension enable hide_input/main && \
     jupyter nbextension enable hide_input_all/main && \
     jupyter nbextension enable init_cell/main && \
-    pip install ipywidgets -i http://pypi.douban.com/simple/  --trusted-host pypi.douban.com && \
     pip install qgrid -i http://pypi.douban.com/simple/  --trusted-host pypi.douban.com && \
     pip install matplotlib -i http://pypi.douban.com/simple/  --trusted-host pypi.douban.com && \
     pip install seaborn -i http://pypi.douban.com/simple/  --trusted-host pypi.douban.com && \
@@ -39,8 +39,7 @@ RUN cd /tmp && \
     pip install ta-lib -i http://pypi.douban.com/simple/  --trusted-host pypi.douban.com && \
     pip install xlrd -i http://pypi.douban.com/simple/  --trusted-host pypi.douban.com && \
     pip install xlwt -i http://pypi.douban.com/simple/  --trusted-host pypi.douban.com && \
-	pip install tensorflow -i http://pypi.douban.com/simple/  --trusted-host pypi.douban.com && \
-	pip install Keras -i http://pypi.douban.com/simple/  --trusted-host pypi.douban.com && \
+    pip install tensorflow==2.3.1 -i http://pypi.douban.com/simple/  --trusted-host pypi.douban.com && \
+    pip install Keras==2.4.3 -i http://pypi.douban.com/simple/  --trusted-host pypi.douban.com && \
     jupyter nbextension enable --py qgrid && \
-    jupyter nbextension enable --py widgetsnbextension && \
     rm -rf /home/$NB_USER/.cache
