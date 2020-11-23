@@ -39,7 +39,7 @@ RUN cd /tmp && \
     pip install ta-lib -i http://pypi.douban.com/simple/  --trusted-host pypi.douban.com && \
     pip install xlrd -i http://pypi.douban.com/simple/  --trusted-host pypi.douban.com && \
     pip install xlwt -i http://pypi.douban.com/simple/  --trusted-host pypi.douban.com && \
-    pip install tensorflow==2.3.1 -i http://pypi.douban.com/simple/  --trusted-host pypi.douban.com && \
-    pip install Keras==2.4.3 -i http://pypi.douban.com/simple/  --trusted-host pypi.douban.com && \
+    pip install tensorflow==2.3.1 --use-feature=2020-resolver -i http://pypi.douban.com/simple/  --trusted-host pypi.douban.com && \
+    pip install Keras==2.4.3 --use-feature=2020-resolver -i http://pypi.douban.com/simple/  --trusted-host pypi.douban.com && \
     jupyter nbextension enable --py qgrid && \
     rm -rf /home/$NB_USER/.cache
